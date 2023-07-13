@@ -33,6 +33,16 @@ cmd.exe /c sf data tree import -p data/sample-data-plan.json
 call :checkForError
 @echo:
 
+echo Creating package...
+cmd.exe /c sf package create -n MyPackage -t Unlocked -r force-app
+call :checkForError
+@echo:
+
+echo Creating package version...
+cmd.exe /c sf package version create -x -p MyPackage
+call :checkForError
+@echo:
+
 rem Report install success if no error
 @echo:
 if ["%errorlevel%"]==["0"] (

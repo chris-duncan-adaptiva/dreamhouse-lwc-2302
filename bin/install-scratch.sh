@@ -30,6 +30,14 @@ echo "Importing sample data..." && \
 sf data tree import -p data/sample-data-plan.json && \
 echo "" && \
 
+echo "Creating package..." && \
+sf package create -n MyPackage -t Unlocked -r force-app && \
+echo "" && \
+
+echo "Creating package version..." && \
+sf package version create -x -p MyPackage && \
+echo "" && \
+
 echo "Opening org..." && \
 sf org open -p lightning/n/Property_Explorer && \
 echo ""
